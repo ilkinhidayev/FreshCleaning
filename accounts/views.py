@@ -1,7 +1,8 @@
-from django.contrib.auth.forms import AuthenticationForm
+from .forms import UserRegisterForm, UserUpdateForm, UserPasswordChangeForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm
 from django.contrib import messages
 
 def home(request):
@@ -33,3 +34,42 @@ def user_login(request):
 def logout_view(request):
     logout(request)
     return redirect('home')  # ya da hangi sayfaya yönlendirmek istiyorsanız onu yazın.
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+
+        if u_form.is_valid():
+            u_form.save()
+            messages.success(request, 'Your account has been updated!')
+            return redirect('profile')
+
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+
+    context = {
+        'u_form': u_form,
+    }
+
+    return render(request, 'accounts/profile.html', context)
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        p_form = UserPasswordChangeForm(request.user, request.POST)
+
+        if p_form.is_valid():
+            user = p_form.save()
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        p_form = UserPasswordChangeForm(request.user)
+    
+    context = {
+        'p_form': p_form
+    }
+
+    return render(request, 'accounts/change_password.html', context)
