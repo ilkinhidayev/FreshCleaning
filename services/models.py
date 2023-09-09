@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import User
+
 
 class Service(models.Model):
     name = models.CharField(max_length=200)
@@ -11,7 +13,7 @@ class Service(models.Model):
         return self.name
 
 class Order(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="services_orders")
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     date_ordered = models.DateTimeField(auto_now_add=True)
     
