@@ -13,3 +13,7 @@ def add_service(request):
 
     context = {'form': form}
     return render(request, 'services/add_service.html', context)
+
+def list_services(request):
+    services = Service.objects.all()
+    return render(request, 'services/list_services.html', {'services': services})
