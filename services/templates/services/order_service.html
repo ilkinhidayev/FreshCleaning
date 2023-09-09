@@ -3,12 +3,12 @@
 {% load bootstrap4 %} {# Burada bootstrap4 template tag'lerini yüklüyoruz #}
 
 {% block content %}
-  <h2 class="mt-4 mb-4">Add a Service</h2>
+  <h2 class="mt-4 mb-4">Order a Service</h2>
   <div class="container">
     <form method="post" class="mb-3">
       {% csrf_token %}
       {% bootstrap_form form %} {# Burada formunuzu Bootstrap stilinde render ediyoruz #}
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Order</button>
     </form>
   </div>
 {% endblock %}

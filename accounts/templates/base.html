@@ -18,9 +18,13 @@
 <script src="{% static 'js/App.js' %}"></script>
 <body>
     <header>
-        <nav>
-            <!-- Buraya menü öğelerinizi ekleyebilirsiniz. -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- Navigasyon menüsü içeriği -->
         </nav>
+        <div class="container mt-5">
+            {% block content %}
+            {% endblock content %}
+        </div>
     </header>
     
     <main>
