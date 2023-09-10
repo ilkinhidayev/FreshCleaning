@@ -3,8 +3,10 @@
 {% block content %}
 <h2>Kullanıcı Paneli</h2>
 <ul>
+    <li><a href="{% url 'user_profile' %}">Profil Bilgileri</a></li>
     {% for order in orders %}
         <li>{{ order.service_name }} - {{ order.status }} - {{ order.ordered_date }}</li>
     {% endfor %}
 </ul>
+
 {% endblock %}
