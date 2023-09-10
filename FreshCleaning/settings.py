@@ -132,3 +132,6 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'info@freshcleaning.az'
 EMAIL_HOST_PASSWORD = 'Cosqun112233?'
+
+LOGIN_REDIRECT_URL = 'user_dashboard'
+

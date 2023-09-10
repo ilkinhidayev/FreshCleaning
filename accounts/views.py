@@ -27,7 +27,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('home')  # 'home' kullanıcının başarılı giriş yaptıktan sonra yönlendirileceği url adıdır.
+            return redirect('user_dashboard')  # 'home' kullanıcının başarılı giriş yaptıktan sonra yönlendirileceği url adıdır.
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})

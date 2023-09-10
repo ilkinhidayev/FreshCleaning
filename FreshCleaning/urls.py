@@ -23,5 +23,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('', views.home, name='home'),
     path('services/', include('services.urls')),
-    path('user/', include('user_panel.urls')),  # user_panel uygulamasını dahil ettik.
+    path('dashboard/', include('user_panel.urls')),  # user_panel uygulamasını dahil ettik.
 ]

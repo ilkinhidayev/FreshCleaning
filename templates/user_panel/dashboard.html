@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Kullanıcı Paneli</h2>
+<ul>
+    {% for order in orders %}
+        <li>{{ order.service_name }} - {{ order.status }} - {{ order.ordered_date }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
